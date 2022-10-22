@@ -104,11 +104,11 @@ CREATE TABLE IF NOT EXISTS `store` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `customer`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
+DROP TABLE IF EXISTS `customer`;
+CREATE TABLE IF NOT EXISTS `customer` (
   `id` int(12) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `nic` varchar(25) NOT NULL,
@@ -133,13 +133,13 @@ ALTER TABLE `items`
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `customer_id` FOREIGN KEY (`customer_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`);
 
 --
 -- Constraints for table `store`
 --
 ALTER TABLE `store`
-  ADD CONSTRAINT `owner` FOREIGN KEY (`owner`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `owner` FOREIGN KEY (`owner`) REFERENCES `customer` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
